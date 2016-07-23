@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打字母26</title>
+    <script src="js/animate.js"></script>
+    <script src="js/game.js"></script>
+    <style>
+        html,body{
+            width:100%;height:100%;background:#000;color:#fff;
+            margin:0;padding:0;
+            overflow: hidden;
+        }
+        .bg{
+            width:100%;height:900px;
+            position: relative;top:-250px;background:url("img/b1.jpg") no-repeat;
+            background-size:100% 900px;
+        }
+        span{
+            font-size:30px;
+        }
+        .box{
+            width:100%;height:40px;position:fixed;left:0;bottom:0;
+            background:#1B4A00;z-index:99;
+        }
+        .box div{
+            width:33.3333%;height:100%;float:left;color:#fff;text-align:center;
+            font-size:26px;line-height:40px;
+        }
+        .start{
+            width:300px;
+            height:600px;
+            position:absolute;top:150px; 
+            left:550px;
+            background:url("img/b1.png") no-repeat;background-size:100% 80%;
+            cursor: pointer;
+        }
+        .over{
+            width:300px;height:600px;position:absolute;top:-170px; left:550px;background:url("img/gameover.png") no-repeat;background-size:100% 80%;cursor: pointer;
+        }
+        .reset{
+            width:200px;height:50px;
+            position: absolute;left:50px;top:350px;
+        }
+        .Next{
+            width:300px;height:600px;position:absolute;top:-170px; left:550px;background:url("img/Next.png") no-repeat;background-size:100% 80%;cursor: pointer;
+        }
+        .NEXT{
+            width:200px;height:50px;
+            position: absolute;left:50px;top:320px;
+        }
+        .last{
+            width:300px;height:600px;position:absolute;top:-170px; left:550px;background:url("img/last.png") no-repeat;background-size:100% 80%;cursor: pointer;
+        }
+        .LAST{
+            width:200px;height:50px;
+            position: absolute;left:50px;top:350px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var life=document.getElementsByClassName("life")[0];
+            var score=document.getElementsByClassName("score")[0];
+            var step=document.getElementsByClassName("step")[0];
+            var start=document.getElementsByClassName("start")[0];
+
+            var obj=new game(life,score,step);
+            start.onclick=function(){
+                animate(start,{top:-170},1000,function(){
+                    obj.play()
+                })
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+  <div class="bg">
+      <div class="start"></div>
+      <div class="over">
+          <div class="reset"></div>
+      </div>
+      <div class="Next">
+          <div class="NEXT"></div>
+      </div>
+      <div class="last">
+          <div class="LAST"></div>
+      </div>
+   <div class="box">
+       <div>
+           <span>生命值：</span>
+           <span class="life">10</span>
+       </div>
+       <div>
+           <span>分数：</span>
+           <span class="score">0</span>
+       </div>
+       <div>
+           <span>关卡:</span>
+           <span class="step">1</span>
+       </div>
+   </div>
+  </div>
+</body>
+</html>
